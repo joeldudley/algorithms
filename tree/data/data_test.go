@@ -26,11 +26,14 @@ func TestCanGenerateTree(t *testing.T) {
 	if !reflect.DeepEqual(testTree, testTreeHandcrafted) {
 		t.Errorf("did not generate expected tree")
 	}
+
+	x := NotBstThree
+	println(x)
 }
 
 func TestCanGenerateEmptyTree(t *testing.T) {
-	tree := GenerateTree([]int{})
-	if tree != nil {
+	testTree := GenerateTree([]int{})
+	if testTree != nil {
 		t.Errorf("expected a nil tree")
 	}
 }

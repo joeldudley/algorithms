@@ -5,85 +5,29 @@ import "epi/tree"
 // Various trees. Used in tests.
 var (
 	// Tree is a random tree with no particular properties.
-	Tree = &tree.Node{
-		L: &tree.Node{
-			L: &tree.Node{
-				L:   &tree.Node{Val: 1},
-				R:   &tree.Node{Val: 2},
-				Val: 3,
-			},
-			R:   &tree.Node{Val: 4},
-			Val: 5,
-		},
-		R: &tree.Node{
-			L: &tree.Node{Val: 6},
-			R: &tree.Node{
-				L:   &tree.Node{Val: 7},
-				R:   &tree.Node{Val: 8},
-				Val: 9,
-			},
-			Val: 10,
-		},
-		Val: 11,
-	}
+	Tree = GenerateTree([]int{1, 3, 2, 5, 4, 11, 6, 10, 7, 9, 8})
 
 	// BstOne is a small binary search tree.
-	BstOne = &tree.Node{
-		L:   &tree.Node{Val: 1},
-		R:   &tree.Node{Val: 3},
-		Val: 2,
-	}
+	BstOne = GenerateTree([]int{1, 2, 3})
 
 	// BstTwo is a larger binary search tree.
-	BstTwo = &tree.Node{
-		L: &tree.Node{
-			L:   &tree.Node{Val: 1},
-			R:   &tree.Node{Val: 3},
-			Val: 2,
-		},
-		R: &tree.Node{
-			L:   &tree.Node{Val: 5},
-			R:   &tree.Node{Val: 7},
-			Val: 6,
-		},
-		Val: 4,
-	}
+	BstTwo = GenerateTree([]int{1, 2, 3, 4, 5, 6, 7})
 
 	// BstThree is a binary search tree where a value on the left-hand side is equal to the root.
-	BstThree = &tree.Node{
-		L:   &tree.Node{Val: 1},
-		R:   &tree.Node{Val: 2},
-		Val: 1,
-	}
+	BstThree = GenerateTree([]int{1, 1, 2})
 
 	// BstFour is a binary search tree where a value on the right-hand side is equal to the root.
-	BstFour = &tree.Node{
-		L:   &tree.Node{Val: 1},
-		R:   &tree.Node{Val: 2},
-		Val: 2,
-	}
+	BstFour = GenerateTree([]int{1, 2, 2})
 
-	NotBstOne = &tree.Node{
-		L:   &tree.Node{Val: 2}, // Higher than the root.
-		R:   &tree.Node{Val: 3},
-		Val: 1,
-	}
+	// NotBstOne is a binary search tree where the left-hand side has a value higher than the root.
+	NotBstOne = GenerateTree([]int{2, 1, 3})
 
-	NotBstTwo = &tree.Node{
-		L:   &tree.Node{Val: 1},
-		R:   &tree.Node{Val: 2}, // Lower than the root.
-		Val: 3,
-	}
+	// NotBstTwo is a binary search tree where the right-hand side has a value lower than the root.
+	NotBstTwo = GenerateTree([]int{1, 3, 2})
 
-	NotBstThree = &tree.Node{
-		L: &tree.Node{
-			L:   &tree.Node{Val: 1},
-			R:   &tree.Node{Val: 1}, // Higher than the root.
-			Val: 2,
-		},
-		R:   &tree.Node{Val: 5},
-		Val: 4,
-	}
+	// NotBstThree is a binary search tree where the right-hand side has a value lower than the
+	// root, but nested a level further down.
+	NotBstThree = GenerateTree([]int{1, 2, 3, 4, 1, 5, 6})
 )
 
 // GenerateTree takes an array of values, uses the middle value as the root, then recursively
