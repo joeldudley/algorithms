@@ -4,7 +4,7 @@ import "epi/tree"
 
 // Various trees. Used in tests.
 var (
-	// A random tree with no particular properties.
+	// Tree is a random tree with no particular properties.
 	Tree = &tree.Node{
 		L: &tree.Node{
 			L: &tree.Node{

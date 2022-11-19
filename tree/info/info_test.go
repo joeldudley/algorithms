@@ -1,4 +1,4 @@
-package validation
+package info
 
 import (
 	"testing"
@@ -19,5 +19,13 @@ func TestBinarySearchTreeValidation(t *testing.T) {
 		if IsBinarySearchTree(bst) {
 			t.Errorf("incorrectly found non-BST to be BST")
 		}
+	}
+}
+
+func TestTreeHeight(t *testing.T) {
+	// TODO - Expand tests once we can generate trees from arrays.
+	treeHeight := TreeHeight(data.Tree)
+	if treeHeight != 4 {
+		t.Errorf("expected height of %d, got %d", 4, treeHeight)
 	}
 }
