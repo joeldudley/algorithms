@@ -1,56 +1,15 @@
-package fourteen
+package validation
 
-import "testing"
-
-var (
-	bst = &Node{
-		L:   &Node{Val: 1},
-		R:   &Node{Val: 3},
-		Val: 2,
-	}
-
-	notBstOne = &Node{
-		L:   &Node{Val: 2}, // Higher than the root.
-		R:   &Node{Val: 3},
-		Val: 1,
-	}
-
-	notBstTwo = &Node{
-		L:   &Node{Val: 1},
-		R:   &Node{Val: 2}, // Lower than the root.
-		Val: 3,
-	}
-
-	notBstThree = &Node{
-		L: &Node{
-			L:   &Node{Val: 1},
-			R:   &Node{Val: 1}, // Higher than the root.
-			Val: 2,
-		},
-		R:   &Node{Val: 5},
-		Val: 4,
-	}
+import (
+	"epi/tree"
 )
 
-func Test(t *testing.T) {
-	if !IsBstBruteForce(bst) {
-		t.Errorf("evaluated BST as non-BST")
-	}
-	if IsBstBruteForce(notBstOne) {
-		t.Errorf("evaluated non-BST as BST")
-	}
-	if IsBstBruteForce(notBstTwo) {
-		t.Errorf("evaluated non-BST as BST")
-	}
-	if IsBstBruteForce(notBstThree) {
-		t.Errorf("evaluated non-BST as BST")
-	}
-}
-
-// IsBstBruteForce gets each node, and checks it against all its right and all its left children.
-// There is no attempt to cache whether individual subtrees are BSTs.
-func IsBstBruteForce(node *Node) bool {
-	nodesToProcess := []*Node{node}
+// IsBinarySearchTree gets each node, and checks it against all its right and all its left children.
+// There is no attempt to cache whether individual subtrees are BSTs - for each node, we recheck
+// the entire subtree.
+// TODO - Improve on this brute-force approach.
+func IsBinarySearchTree(node *tree.Node) bool {
+	nodesToProcess := []*tree.Node{node}
 
 	// We build a list of all the nodes.
 	for i := 0; i < len(nodesToProcess); i++ {
@@ -69,7 +28,7 @@ func IsBstBruteForce(node *Node) bool {
 		currentNode := nodesToProcess[i]
 
 		// ...we build a list of its left-hand nodes, and check none is larger...
-		var leftChildNodes []*Node
+		var leftChildNodes []*tree.Node
 		if currentNode.L != nil {
 			leftChildNodes = append(leftChildNodes, currentNode.L)
 		}
@@ -88,7 +47,7 @@ func IsBstBruteForce(node *Node) bool {
 		}
 
 		// ...we build a list of its right-hand nodes, and check none is smaller...
-		var rightChildNodes []*Node
+		var rightChildNodes []*tree.Node
 		if currentNode.R != nil {
 			rightChildNodes = append(rightChildNodes, currentNode.R)
 		}
