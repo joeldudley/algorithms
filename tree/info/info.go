@@ -5,7 +5,7 @@ import (
 	"epi/tree/traversal"
 )
 
-// IsBinarySearchTree checks if the node is the root of a binary search tree.
+// IsBinarySearchTree checks if the provided node is the root of a binary search tree.
 func IsBinarySearchTree(node *tree.Node) bool {
 	// We perform an in-order traversal, and check that it increases monotonically.
 	inOrderTraversal := traversal.InOrderTraversal(node)
@@ -17,6 +17,7 @@ func IsBinarySearchTree(node *tree.Node) bool {
 	return true
 }
 
+// TreeHeight returns the height of the tree whose root is the provided node.
 func TreeHeight(node *tree.Node) int {
 	maxHeight := 1
 

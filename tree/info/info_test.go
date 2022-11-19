@@ -8,7 +8,7 @@ import (
 	"epi/tree"
 )
 
-func TestBinarySearchTreeValidation(t *testing.T) {
+func TestCanDetectBinarySearchTree(t *testing.T) {
 	for _, bst := range []*tree.Node{data.BstOne, data.BstTwo, data.BstThree, data.BstFour} {
 		if !IsBinarySearchTree(bst) {
 			t.Errorf("incorrectly found BST to be non-BST")
@@ -22,7 +22,7 @@ func TestBinarySearchTreeValidation(t *testing.T) {
 	}
 }
 
-func TestTreeHeight(t *testing.T) {
+func TestCanDetermineTreeHeight(t *testing.T) {
 	// TODO - Expand tests once we can generate trees from arrays.
 	treeHeight := TreeHeight(data.Tree)
 	if treeHeight != 4 {
