@@ -26,9 +26,6 @@ func TestCanGenerateTree(t *testing.T) {
 	if !reflect.DeepEqual(testTree, testTreeHandcrafted) {
 		t.Errorf("did not generate expected tree")
 	}
-
-	x := NotBstThree
-	println(x)
 }
 
 func TestCanGenerateEmptyTree(t *testing.T) {
